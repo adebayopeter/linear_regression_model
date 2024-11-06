@@ -1,0 +1,4 @@
+model/*
+!model/.gitkeep
+/venv/
+.idea/
