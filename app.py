@@ -1,16 +1,32 @@
-# This is a sample Python script.
+import streamlit as st
+import requests
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# app title and description
+st.title("Power Output Prediction")
+st.write("Enter the values for the following features to predict power output (PE).")
 
+# User input for each feature
+ambient_temp = st.number_input("Ambient Temperature (AT)", value=15.0)
+exhaust_vacuum = st.number_input("Exhaust Vacuum (V)", value=40.0)
+ambient_pressure = st.number_input("Ambient Pressure (AP)", value=1000.0)
+relative_humidity = st.number_input("Relative Humidity (RH)", value=75.0)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# Create a button for making the prediction
+if st.button("Predict"):
+    # prepare data
+    input_data = {
+        "AT": ambient_temp,
+        "V": exhaust_vacuum,
+        "AP": ambient_pressure,
+        "RH": relative_humidity
+    }
 
+    # make api call
+    response = requests.post("http://127.0.0.1:8000/predict", json=input_data)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    if response.status_code == 200:
+        prediction = response.json()["prediction"]
+        st.write(f"Predicted Power Output (PE): {prediction}")
+    else:
+        st.write("Error in prediction. Please try again.")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
