@@ -52,15 +52,15 @@ Follow these steps to set up and run the project.
   python linear_regression_model.py
   ```
 2. Deploy FastAPI
-The FastAPI application (`app.py`) loads the saved model and provides an endpoint for predictions. Run it using `uvicorn`:
+  The FastAPI application (`api.py`) loads the saved model and provides an endpoint for predictions. Run it using `uvicorn`:
   ```bash
-  uvicorn app:app --reload
+  uvicorn api:app --reload
   ```
-This will start the FastAPI server at `http://127.0.0.1:8000`
+  This will start the FastAPI server at `http://127.0.0.1:8000`
 3. Run Streamlit
 The Streamlit app allows users to input values and retrieve predictions from the FastAPI server. To start Streamlit, run:
   ```bash
-  streamlit run src/streamlit_app.py
+  streamlit run app.py
   ``` 
 The Streamlit app will open in a browser window at `http://localhost:8501`.
 
