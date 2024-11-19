@@ -57,6 +57,7 @@ Follow these steps to set up and run the project.
   uvicorn api:app --reload
   ```
   This will start the FastAPI server at `http://127.0.0.1:8000`
+
 3. Run Streamlit
 The Streamlit app allows users to input values and retrieve predictions from the FastAPI server. To start Streamlit, run:
   ```bash
