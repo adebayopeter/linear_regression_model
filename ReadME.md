@@ -110,7 +110,8 @@ The project directory is structured as follows:
 ├─ src
 ├─ .gitignore
 ├─ app.py
-├─ linesr_regression_model.py
+├─ api.py
+├─ linear_regression_model.py
 ├─ README.md
 └─ requirements.txt
 ```
